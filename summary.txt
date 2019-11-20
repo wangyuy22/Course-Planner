@@ -1,0 +1,26 @@
+﻿Course Planner
+
+
+The Course Planner is an implementation project that takes in a specified engineering major as input and returns an arrangement of courses such that none of the prerequisites conflict with each other, as well as a visualization to help the client understand the course load he/she will be taking. This program will help the Penn Freshmen and Baby Quakers to better prepare for their 4 years in Penn by understanding which classes they have to take and in what order. Note that we only include classes the are definite requirements and not ones where a student has the choice between a couple of classes to fulfill a given requirement. Moreover, if there are a couple of classes such as PHYS140 or PHYS150 that fulfill the same requirement, we will pick the first. Finally, some classes have corequisites and since having that may interfere with the graph being a DAG, we have represented them in the same was as prerequisites.
+
+
+The program has 3 main components — the document search, the topological sort (graph algorithms), and the data visualization (graph algorithms/advanced topics). We used Jsoup to find the information needed for each of the engineering majors. Topological sort was used to arrange the courses so that courses with prerequisites don’t go before the prerequisites themselves. Lastly, data visualization was used to give the client a better understanding of his/her courses over the 4 years through a graph model.
+
+
+Document Search - Yuyang Wang
+
+
+For the document search, we collected data from Penn catalog, and very conveniently, after choosing one of the majors, it will take the user to a page with all the requirements of that major. Each course also has a link that takes it to its own page, where there is information on its prerequisites. Therefore, the program traverses through the required courses and extracts this information and returns a TreeMap that includes the name of the required class as the key and an ArrayList of its prerequisites as the value. The website used is linked below:
+https://catalog.upenn.edu/undergraduate/engineering-applied-science/majors/
+
+
+Topological Sort - Alexander Go
+
+
+For the topological sort, we took in the TreeMap from the document search as an adjacency list. Using the TreeMap, we created a graph with nodes representing classes that point towards classes that it is a prerequisite for. We used this adjacency list to perform a depth-first search on the created graph. After a node has been visited, and can not visit any other nodes, it will be pushed into the stack. The algorithm will then return a topological sort of all the nodes.
+
+
+Data Visualisation - Leah Wang
+
+
+For the visualization, I took in the TreeMap of the prerequisites and created vertices of all the courses mentioned. These vertices are represented as ovals with a label to denote the course they represent. Then, I created arrows pointing from the prereq to the course, thus displaying the information as a directed graph.
