@@ -1,0 +1,4 @@
+Course Planner is a project in Java that aims to visualize major requirements for students at the University of Pennsylvania, 
+specifically ones in the School of Engineering and Applied Science. It uses JSoup the scrape data from the University
+almanac in order to obtain data on different engineering majors and produces a visualization to show students what order
+to take the courses depending pre-requisites and co-requisites.
